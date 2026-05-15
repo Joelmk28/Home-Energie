@@ -66,4 +66,10 @@ public class UserService {
         this.userRepository.save(user);
     }
 
+    public void deleteUser(Long id){
+        User user = this.userRepository.findById(id)
+                .orElseThrow(()->new IllegalArgumentException("User not found"));
+        this.userRepository.delete(user);
+    }
+
 }
