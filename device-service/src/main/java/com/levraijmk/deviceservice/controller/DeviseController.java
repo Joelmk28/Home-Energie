@@ -2,11 +2,9 @@ package com.levraijmk.deviceservice.controller;
 
 import com.levraijmk.deviceservice.dto.DeviceDto;
 import com.levraijmk.deviceservice.service.DeviseService;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/api/v1/device")
@@ -22,7 +20,19 @@ public class DeviseController {
 
     @GetMapping("/{id}")
     public ResponseEntity<DeviceDto> getDevice(@PathVariable Long id){
-       DeviceDto deviceDto =  this.deviseService.getDevise(id);
-       return ResponseEntity.ok(deviceDto);
+        try{
+            DeviceDto deviceDto =  this.deviseService.getDevise(id);
+            return ResponseEntity.ok(deviceDto);
+        }
+        catch (IllegalArgumentException e){
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+
+    }
+
+    @PostMapping
+    public ResponseEntity<DeviceDto> createDevice(@RequestBody DeviceDto deviceDto){
+        DeviceDto createdDevice = this.deviseService.createDevice(deviceDto);
+        return new ResponseEntity<>(createdDevice,HttpStatus.CREATED);
     }
 }
