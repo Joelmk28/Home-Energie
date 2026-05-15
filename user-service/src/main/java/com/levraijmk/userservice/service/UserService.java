@@ -52,6 +52,18 @@ public class UserService {
                 .orElse(null);
    }
 
+    public void updateUser(Long id, UserDto userDto){
+        User user = this.userRepository.findById(id)
+                .orElseThrow(()-> new IllegalArgumentException("User not found"));
 
+        user.setName(userDto.getName());
+        user.setSurname(userDto.getSurname());
+        user.setEmail(userDto.getEmail());
+        user.setAddress(userDto.getAddress());
+        user.setAlerting(userDto.isAlerting());
+        user.setEnergyAlertingThreshold(userDto.getEnergyAlertingThreshold());
+
+        this.userRepository.save(user);
+    }
 
 }
