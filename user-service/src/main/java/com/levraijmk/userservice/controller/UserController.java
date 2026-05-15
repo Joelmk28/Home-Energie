@@ -48,11 +48,13 @@ public class UserController {
         }
     }
 
+
+
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteUser(@PathVariable Long id){
         try{
             this.userService.deleteUser(id);
-            return ResponseEntity.noContent().build();
+            return ResponseEntity.noContent().build(); //204
         }
         catch (IllegalArgumentException  e){
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
