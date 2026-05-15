@@ -15,13 +15,14 @@ import org.springframework.web.bind.annotation.RestController;
 public class UserController {
    private final UserService userService;
 
-    public UserController (UserService userService){
+    public UserController (final UserService userService){
         this.userService = userService;
     }
 
+
     @PostMapping
     public ResponseEntity<UserDto> createUser(@RequestBody UserDto userDto){
-        UserDto created = userService.createUser(userDto);
+        UserDto created = this.userService.createUser(userDto);
         return new ResponseEntity<>(created, HttpStatus.CREATED);
     }
 }
