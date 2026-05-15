@@ -1,6 +1,7 @@
 package com.levraijmk.deviceservice.controller;
 
 import com.levraijmk.deviceservice.dto.DeviceDto;
+import com.levraijmk.deviceservice.entity.Device;
 import com.levraijmk.deviceservice.service.DeviseService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -34,5 +35,17 @@ public class DeviseController {
     public ResponseEntity<DeviceDto> createDevice(@RequestBody DeviceDto deviceDto){
         DeviceDto createdDevice = this.deviseService.createDevice(deviceDto);
         return new ResponseEntity<>(createdDevice,HttpStatus.CREATED);
+    }
+
+    @PutMapping("/{id}")
+    public ResponseEntity<DeviceDto> updateDevice(@PathVariable Long id, @RequestBody DeviceDto deviceDto){
+        try {
+            DeviceDto device = this.deviseService.updateDevice(id,deviceDto);
+            return ResponseEntity.ok(device);
+        }
+        catch (IllegalArgumentException e){
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+
     }
 }

@@ -16,9 +16,9 @@ public class DeviseService {
 
 
     public DeviceDto getDevise(Long id){
-        Device device = this.deviceRepository.findById(id)
-                .orElseThrow(()->new IllegalArgumentException("Device not found"));
-        return deviceToDeviceDto(device);
+        return deviceToDeviceDto(this.deviceRepository.findById(id)
+                .orElseThrow(()-> new IllegalArgumentException("Device Not Found"))
+        );
 
     }
 
@@ -44,5 +44,17 @@ public class DeviseService {
 
     public DeviceDto createDevice(DeviceDto deviceDto) {
         return deviceToDeviceDto(this.deviceRepository.save(deviceDtoToDevice(deviceDto)));
+    }
+
+    public DeviceDto updateDevice(Long id,DeviceDto deviceDto) {
+        Device deviceFound = this.deviceRepository.findById(id)
+                .orElseThrow(()-> new IllegalArgumentException("Device Not Found"));
+
+        deviceFound.setName(deviceDto.getName());
+        deviceFound.setType(deviceDto.getType());
+        deviceFound.setLocation(deviceDto.getLocation());
+
+       return deviceToDeviceDto(this.deviceRepository.save(deviceFound));
+
     }
 }
