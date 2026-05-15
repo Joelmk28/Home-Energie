@@ -5,10 +5,7 @@ import com.levraijmk.userservice.service.UserService;
 import org.apache.catalina.User;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/api/v1/user")
@@ -25,4 +22,15 @@ public class UserController {
         UserDto created = this.userService.createUser(userDto);
         return new ResponseEntity<>(created, HttpStatus.CREATED);
     }
+
+    @GetMapping("/{id}")
+    public ResponseEntity<UserDto> getUserById(@PathVariable Long id){
+        UserDto userDto = this.userService.getUserById(id);
+        if(userDto==null){
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+        return ResponseEntity.ok(userDto);
+    }
+
+
 }
