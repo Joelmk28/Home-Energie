@@ -1,6 +1,7 @@
 package com.levraijmk.ingestionservice.controller;
 
 import com.levraijmk.ingestionservice.dto.EnergyUsageDto;
+import com.levraijmk.ingestionservice.service.IngestionService;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
