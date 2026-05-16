@@ -2,6 +2,7 @@ package com.levraijmk.deviceservice.service;
 
 import com.levraijmk.deviceservice.dto.DeviceDto;
 import com.levraijmk.deviceservice.entity.Device;
+import com.levraijmk.deviceservice.exception.DeviceNotFoundException;
 import com.levraijmk.deviceservice.repository.DeviceRepository;
 import org.springframework.stereotype.Service;
 
@@ -17,7 +18,7 @@ public class DeviseService {
 
     public DeviceDto getDevise(Long id){
         return deviceToDeviceDto(this.deviceRepository.findById(id)
-                .orElseThrow(()-> new IllegalArgumentException("Device Not Found"))
+                .orElseThrow(()-> new DeviceNotFoundException("Device Not Found "+id))
         );
 
     }
@@ -48,7 +49,7 @@ public class DeviseService {
 
     public DeviceDto updateDevice(Long id,DeviceDto deviceDto) {
         Device deviceFound = this.deviceRepository.findById(id)
-                .orElseThrow(()-> new IllegalArgumentException("Device Not Found"));
+                .orElseThrow(()-> new DeviceNotFoundException("Device Not Found "+ id));
 
         deviceFound.setName(deviceDto.getName());
         deviceFound.setType(deviceDto.getType());
@@ -60,7 +61,7 @@ public class DeviseService {
 
     public void deleteDevice(Long id) {
         Device deviceFound = this.deviceRepository.findById(id)
-                .orElseThrow(()-> new IllegalArgumentException("Device Not Found"));
+                .orElseThrow(()-> new DeviceNotFoundException("Device Not Found "+ id));
         this.deviceRepository.delete(deviceFound);
     }
 }
