@@ -57,4 +57,10 @@ public class DeviseService {
        return deviceToDeviceDto(this.deviceRepository.save(deviceFound));
 
     }
+
+    public void deleteDevice(Long id) {
+        Device deviceFound = this.deviceRepository.findById(id)
+                .orElseThrow(()-> new IllegalArgumentException("Device Not Found"));
+        this.deviceRepository.delete(deviceFound);
+    }
 }

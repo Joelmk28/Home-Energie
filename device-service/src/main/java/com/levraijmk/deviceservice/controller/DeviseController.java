@@ -48,4 +48,16 @@ public class DeviseController {
         }
 
     }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> deleteDevice(@PathVariable Long id){
+        try {
+            this.deviseService.deleteDevice(id);
+            return ResponseEntity.noContent().build();
+        }
+        catch (IllegalArgumentException e){
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+
+    }
 }
