@@ -6,6 +6,9 @@ import com.levraijmk.deviceservice.exception.DeviceNotFoundException;
 import com.levraijmk.deviceservice.repository.DeviceRepository;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 @Service
 public class DeviseService {
 
@@ -64,4 +67,6 @@ public class DeviseService {
                 .orElseThrow(()-> new DeviceNotFoundException("Device Not Found "+ id));
         this.deviceRepository.delete(deviceFound);
     }
+
+
 }

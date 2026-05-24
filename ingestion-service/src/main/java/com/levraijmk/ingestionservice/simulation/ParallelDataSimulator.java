@@ -14,6 +14,7 @@ import org.springframework.web.client.RestTemplate;
 
 import java.time.LocalDateTime;
 import java.time.ZoneId;
+import java.util.List;
 import java.util.Random;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
@@ -46,6 +47,7 @@ public class ParallelDataSimulator implements CommandLineRunner {
         ((ThreadPoolExecutor)executorService).setCorePoolSize(parallelThreads);
     }
 
+
     @Scheduled(fixedRateString = "${simulation.interval-ms}")
     public void sendMockData() {
         int batchSize = requestsPerInterval / parallelThreads;
@@ -69,6 +71,7 @@ public class ParallelDataSimulator implements CommandLineRunner {
                         log.info("Sent mock data: " + dto);
                     } catch (Exception e) {
                         log.error("Failed to send data: " + e.getMessage());
+                        System.out.println("Impossible d'envoyer les donnes sur ce sujet");
                     }
                 }
             });
