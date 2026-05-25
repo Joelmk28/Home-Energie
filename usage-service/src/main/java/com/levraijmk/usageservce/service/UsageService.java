@@ -4,7 +4,7 @@ package com.levraijmk.usageservce.service;
 import com.influxdb.client.InfluxDBClient;
 import com.influxdb.client.domain.WritePrecision;
 import com.influxdb.client.write.Point;
-import com.levraijmk.usageservce.kafka.event.EnergyUsageEvent;
+import com.levraijmk.sharedevents.event.EnergyUsageEvent;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.kafka.annotation.KafkaListener;
@@ -33,7 +33,7 @@ public class UsageService {
 
     @KafkaListener(topics = "energy-usage", groupId = "usage-service")
     public void energyUsageEvent(EnergyUsageEvent event) {
-
+        System.out.println("🔥--------  MESSAGE RECU à  " +event.timestamp());
         try {
             log.info("Received energy usage event: {}", event);
 

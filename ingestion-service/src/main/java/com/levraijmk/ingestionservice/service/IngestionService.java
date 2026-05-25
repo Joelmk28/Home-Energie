@@ -1,7 +1,7 @@
 package com.levraijmk.ingestionservice.service;
 
 import com.levraijmk.ingestionservice.dto.EnergyUsageDto;
-import kafka.event.EnergyUsageEvent;
+import com.levraijmk.sharedevents.event.EnergyUsageEvent;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.kafka.common.protocol.types.Field;
 import org.springframework.kafka.core.KafkaTemplate;
@@ -10,7 +10,7 @@ import org.springframework.stereotype.Service;
 @Service
 @Slf4j
 public class IngestionService {
-private final KafkaTemplate<String,EnergyUsageEvent> kafkaTemplate;
+private final KafkaTemplate<String, EnergyUsageEvent> kafkaTemplate;
 
 private IngestionService(final KafkaTemplate<String, EnergyUsageEvent> kafkaTemplate ){
     this.kafkaTemplate = kafkaTemplate;

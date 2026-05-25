@@ -3,7 +3,8 @@
   <component name="Encoding">
     <file url="file://$PROJECT_DIR$/device-service/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/ingestion-service/src/main/java" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/usage-servce/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/shared-events/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/usage-service/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/user-service/src/main/java" charset="UTF-8" />
   </component>
 </project>

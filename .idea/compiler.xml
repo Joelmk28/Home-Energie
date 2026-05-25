@@ -2,17 +2,27 @@
 <project version="4">
   <component name="CompilerConfiguration">
     <annotationProcessing>
-      <profile name="Annotation profile for ingestion-service" enabled="true">
+      <profile name="Annotation profile for shared-events" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <processorPath useClasspath="false">
+          <entry name="$MAVEN_REPOSITORY$/org/projectlombok/lombok/1.18.46/lombok-1.18.46.jar" />
+          <entry name="$MAVEN_REPOSITORY$/org/projectlombok/lombok/1.18.46/lombok-1.18.46.jar" />
+        </processorPath>
+        <module name="shared-events" />
+        <module name="device-service" />
+      </profile>
+      <profile name="Annotation profile for usage-servce" enabled="true">
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <processorPath useClasspath="false">
           <entry name="$MAVEN_REPOSITORY$/org/projectlombok/lombok/1.18.46/lombok-1.18.46.jar" />
         </processorPath>
-        <module name="user-service" />
-        <module name="device-service" />
         <module name="ingestion-service" />
-        <module name="usage-servce" />
+        <module name="usage-service" />
+        <module name="user-service" />
       </profile>
     </annotationProcessing>
   </component>
@@ -20,7 +30,8 @@
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
       <module name="device-service" options="-parameters" />
       <module name="ingestion-service" options="-parameters" />
-      <module name="usage-servce" options="-parameters" />
+      <module name="shared-events" options="-parameters" />
+      <module name="usage-service" options="-parameters" />
       <module name="user-service" options="-parameters" />
     </option>
   </component>

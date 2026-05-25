@@ -9,10 +9,13 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>com.levraijmk</groupId>
-    <artifactId>ingestion-service</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
-    <name>ingestion-service</name>
-    <description>ingestion-service</description>
+    <artifactId>shared-events</artifactId>
+    <version>1.0.0</version>
+
+    <packaging>jar</packaging>
+
+    <name>shared-events</name>
+    <description>shared-events</description>
     <url/>
     <licenses>
         <license/>
@@ -32,11 +35,7 @@
     <dependencies>
         <dependency>
             <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-kafka</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-webmvc</artifactId>
+            <artifactId>spring-boot-starter</artifactId>
         </dependency>
 
         <dependency>
@@ -46,37 +45,14 @@
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-kafka-test</artifactId>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-webmvc-test</artifactId>
+            <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
         </dependency>
 
-<!--        pour kafka dans spring boot 4-->
         <dependency>
             <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-json</artifactId>
+            <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
-        <!--        pour kafka dans spring boot 4-->
-        <dependency>
-            <groupId>com.fasterxml.jackson.datatype</groupId>
-            <artifactId>jackson-datatype-jsr310</artifactId>
-        </dependency>
-
-        <dependency>
-            <groupId>com.fasterxml.jackson.core</groupId>
-            <artifactId>jackson-databind</artifactId>
-        </dependency>
-
-        <dependency>
-            <groupId>com.levraijmk</groupId>
-            <artifactId>shared-events</artifactId>
-            <version>1.0.0</version>
-        </dependency>
-
     </dependencies>
 
     <build>
